@@ -17,14 +17,17 @@ namespace Ahmadalli.Tools.ClassTools
         /// <param name="outOfDated">Object that is going to be updated if neccessary</param>
         /// <param name="updateData">The data that will be used for updating</param>
         /// <param name="property">The property that is goign to be updated in outOfDate object</param>
-        public static void UpdateProperty<TSource>(TSource outOfDated, TSource updateData, Expression<Func<TSource, object>> property)
+        /// <returns>True if updated and false if didn't update</returns>
+        public static bool UpdateProperty<TSource>(TSource outOfDated, TSource updateData, Expression<Func<TSource, object>> property)
         {
             var propertyInfo = GetPropertyInfo(outOfDated, property);
 
             if (!(propertyInfo.GetValue(outOfDated).Equals(propertyInfo.GetValue(updateData))))
             {
                 propertyInfo.SetValue(outOfDated, propertyInfo.GetValue(updateData));
+                return true;
             }
+            return false;
         }
 
         /// <summary>
