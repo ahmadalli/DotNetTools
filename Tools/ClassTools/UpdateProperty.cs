@@ -22,7 +22,8 @@ namespace Ahmadalli.Tools.ClassTools
         {
             var propertyInfo = GetPropertyInfo(outOfDated, property);
 
-            if (!(propertyInfo.GetValue(outOfDated).Equals(propertyInfo.GetValue(updateData))))
+            if (propertyInfo.GetValue(updateData) != null && propertyInfo.GetValue(outOfDated) != null &&
+                !(propertyInfo.GetValue(outOfDated).Equals(propertyInfo.GetValue(updateData))))
             {
                 propertyInfo.SetValue(outOfDated, propertyInfo.GetValue(updateData));
                 return true;
