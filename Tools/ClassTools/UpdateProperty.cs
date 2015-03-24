@@ -18,7 +18,7 @@ namespace Ahmadalli.Tools.ClassTools
         /// <param name="updateData">The data that will be used for updating</param>
         /// <param name="property">The property that is goign to be updated in outOfDate object</param>
         /// <returns>True if updated and false if didn't update</returns>
-        public static bool UpdateProperty<TSource>(TSource outOfDated, TSource updateData, Expression<Func<TSource, object>> property)
+        public static bool UpdateProperty<TSource, TProperty>(TSource outOfDated, TSource updateData, Expression<Func<TSource, TProperty>> property)
         {
             var propertyInfo = GetPropertyInfo(outOfDated, property);
 
